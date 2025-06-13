@@ -1,0 +1,333 @@
+/* Suit Customizer Styles */
+.customization-panel {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.customization-panel h5 {
+  color: #212529;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+/* Size Selection */
+.customization-panel .form-select {
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.customization-panel .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Fit Type Selection */
+.fit-type-container {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+}
+
+/* Adjustment Controls */
+.adjustment-control {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  margin-bottom: 1rem;
+}
+
+.adjustment-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.adjustment-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  background: white;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.adjustment-btn:hover:not(:disabled) {
+  background: #007bff;
+  color: white;
+  transform: scale(1.05);
+}
+
+.adjustment-btn:disabled {
+  border-color: #6c757d;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.adjustment-input {
+  width: 80px;
+  text-align: center;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.adjustment-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Price Summary Card */
+.price-summary-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.price-summary-card .card-body {
+  padding: 1.25rem;
+}
+
+.price-summary-card h6 {
+  color: #007bff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.price-row.total {
+  border-top: 2px solid #007bff;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.price-highlight {
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* Alteration Cost Display */
+.alteration-cost {
+  background: #e7f3ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.alteration-cost.waist {
+  border-color: #28a745;
+  background: #e8f5e8;
+  color: #155724;
+}
+
+.alteration-cost.length {
+  border-color: #17a2b8;
+  background: #e6f7ff;
+  color: #0c5460;
+}
+
+/* Info Alert */
+.customizer-alert {
+  border-radius: 6px;
+  border: none;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.customizer-alert.alert-info {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #0d47a1;
+  border-left: 4px solid #2196f3;
+}
+
+/* Modal Styling */
+.suit-customizer-modal .modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.suit-customizer-modal .modal-header {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 1.5rem;
+}
+
+.suit-customizer-modal .modal-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.suit-customizer-modal .btn-close {
+  filter: invert(1);
+}
+
+.suit-customizer-modal .modal-body {
+  padding: 2rem;
+}
+
+.suit-customizer-modal .modal-footer {
+  border-top: 2px solid #e9ecef;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Product Image in Modal */
+.customizer-product-image {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.customizer-product-image:hover {
+  transform: scale(1.02);
+}
+
+/* Buttons */
+.customizer-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.customizer-btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+  color: white;
+}
+
+.customizer-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.customizer-btn-primary:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.customizer-btn-secondary {
+  background: #6c757d;
+  border: none;
+  color: white;
+}
+
+.customizer-btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.customizer-btn-outline {
+  background: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.customizer-btn-outline:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Form Labels */
+.customization-panel .form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.customization-panel .form-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 0.5rem;
+}
+
+/* Range Indicators */
+.range-indicator {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .suit-customizer-modal .modal-body {
+    padding: 1rem;
+  }
+  
+  .customization-panel {
+    padding: 1rem;
+  }
+  
+  .adjustment-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .adjustment-input {
+    width: 100px;
+  }
+}
+
+/* Animation for cost updates */
+@keyframes costUpdate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.cost-updated {
+  animation: costUpdate 0.3s ease;
+}
+
+/* Tooltip styles */
+.info-tooltip {
+  cursor: help;
+  color: #007bff;
+  transition: color 0.2s ease;
+}
+
+.info-tooltip:hover {
+  color: #0056b3;
+} 

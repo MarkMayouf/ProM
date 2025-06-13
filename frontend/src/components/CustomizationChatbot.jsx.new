@@ -1,0 +1,565 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Form, Button, Badge, ProgressBar } from 'react-bootstrap';
+import {
+  FaRobot,
+  FaTimes,
+  FaPaperPlane,
+  FaChevronDown,
+  FaRegCheckCircle,
+  FaRuler,
+  FaTshirt,
+  FaExchangeAlt,
+  FaArrowLeft,
+  FaSave,
+} from 'react-icons/fa';
+
+const CustomizationChatbot = ({
+  item,
+  onComplete,
+  onCancel,
+  isOpen,
+  initialCustomizations,
+}) => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+  const [userResponses, setUserResponses] = useState({
+    pantsLength: '',
+    waist: '',
+    taper: '',
+    cuff: '',
+    sleeves: '',
+    chest: '',
+    shoulders: '',
+    additionalNotes: '',
+  });
+  const [customizationData, setCustomizationData] = useState(null);
+  const [messages, setMessages] = useState([
+    {
+      type: 'bot',
+      text: 'Hello! I can help you customize your suit for the perfect fit.',
+    },
+  ]);
+  const [minimized, setMinimized] = useState(false);
+  const [error, setError] = useState(null);
+
+  const [progress, setProgress] = useState(0);
+  const [showSummary, setShowSummary] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const chatEndRef = useRef(null);
+  const inputRef = useRef(null);
+
+  // Pre-fill user responses if editing existing customization
+  useEffect(() => {
+    if (initialCustomizations) {
+      try {
+        setUserResponses({
+          pantsLength: initialCustomizations.pants?.length || '',
+          waist: initialCustomizations.pants?.waist || '',
+          taper: initialCustomizations.pants?.taper || '',
+          cuff: initialCustomizations.pants?.cuff || '',
+          sleeves: initialCustomizations.measurements?.sleeve || '',
+          chest: initialCustomizations.measurements?.chest || '',
+          shoulders: initialCustomizations.measurements?.shoulder || '',
+          additionalNotes: initialCustomizations.additionalNotes || '',
+        });
+      } catch (err) {
+        console.error('Error initializing customization data:', err);
+        setError('Failed to load previous customization data');
+      }
+    }
+  }, [initialCustomizations]);
+
+  const questions = [
+    {
+      id: 'pantsLength',
+      text: 'How much do you want to adjust the pants length? (in inches, positive to shorten, negative to lengthen)',
+      type: 'text',
+      placeholder: 'e.g., 1.5 or -1.0',
+      section: 'pants',
+    },
+    {
+      id: 'waist',
+      text: 'How much do you want to adjust the waist? (in inches, positive to take in, negative to let out)',
+      type: 'text',
+      placeholder: 'e.g., 1.0 or -0.5',
+      section: 'pants',
+    },
+    {
+      id: 'taper',
+      text: 'Would you like to taper the pant legs?',
+      type: 'select',
+      options: [
+        { value: 'No', label: 'No tapering' },
+        { value: 'Yes', label: 'Yes, taper for a slimmer fit' },
+      ],
+      section: 'pants',
+    },
+    {
+      id: 'cuff',
+      text: 'What type of cuff do you prefer?',
+      type: 'select',
+      options: [
+        { value: 'None', label: 'No cuff (plain hem)' },
+        { value: 'Single', label: 'Single cuff' },
+        { value: 'Double', label: 'Double cuff' },
+      ],
+      section: 'pants',
+    },
+    {
+      id: 'sleeves',
+      text: 'How much do you want to adjust the jacket sleeve length? (in inches, positive to shorten, negative to lengthen)',
+      type: 'text',
+      placeholder: 'e.g., 0.5 or -0.75',
+      section: 'measurements',
+    },
+    {
+      id: 'chest',
+      text: 'Do you need any adjustments to the chest? (in inches, positive to take in, negative to let out)',
+      type: 'text',
+      placeholder: 'e.g., 1.0 or leave blank if no adjustment needed',
+      section: 'measurements',
+      optional: true,
+    },
+    {
+      id: 'shoulders',
+      text: 'Do you need any adjustments to the shoulders? (in inches, specify adjustment)',
+      type: 'text',
+      placeholder: 'Leave blank if no adjustment needed',
+      section: 'measurements',
+      optional: true,
+    },
+    {
+      id: 'additionalNotes',
+      text: 'Any additional notes or specific requests for your alterations?',
+      type: 'textarea',
+      placeholder: 'Add any special instructions here...',
+      optional: true,
+    },
+  ];
+
+  // Focus input when chat opens
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      try {
+        setTimeout(() => {
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
+        }, 300);
+      } catch (error) {
+        console.error('Failed to focus input element:', error);
+      }
+    }
+  }, [isOpen, currentStep]);
+
+  // Scroll to bottom of chat when messages change
+  useEffect(() => {
+    try {
+      if (chatEndRef.current) {
+        chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.error('Failed to scroll to bottom:', error);
+    }
+  }, [messages]);
+
+  // Start the conversation when chat opens
+  useEffect(() => {
+    try {
+      if (isOpen && currentStep === 0 && messages.length === 1) {
+        setTimeout(() => {
+          if (questions && questions.length > 0) {
+            addBotMessage(
+              "Let's start by customizing your pants. " + questions[0].text
+            );
+          }
+        }, 500);
+      }
+    } catch (error) {
+      console.error('Failed to start conversation:', error);
+      addBotMessage(
+        "I'm having trouble starting our conversation. Please try again later."
+      );
+    }
+  }, [isOpen, currentStep, messages.length, questions]);
+
+  // Calculate progress
+  useEffect(() => {
+    const totalSteps = questions.length;
+    const completedSteps = Object.values(userResponses).filter(val => val !== '').length;
+    setProgress((completedSteps / totalSteps) * 100);
+  }, [userResponses]);
+
+  // Enhanced bot message with typing animation
+  const addBotMessage = (text, delay = 800) => {
+    setIsTyping(true);
+    setTimeout(() => {
+      setMessages(prev => [...prev, { type: 'bot', text, timestamp: new Date() }]);
+      setIsTyping(false);
+      playNotificationSound();
+    }, delay);
+  };
+
+  // Play a subtle notification sound
+  const playNotificationSound = () => {
+    try {
+      const audio = new Audio('/notification.mp3');
+      audio.volume = 0.3;
+      audio.play();
+    } catch (error) {
+      console.error('Failed to play notification sound:', error);
+    }
+  };
+
+  // Enhanced response handler with validation
+  const handleResponse = (response) => {
+    try {
+      // Validate numeric inputs
+      if (questions[currentStep].type === 'text' && !questions[currentStep].optional) {
+        const value = parseFloat(response);
+        if (isNaN(value)) {
+          addBotMessage('Please enter a valid number. For example: 1.5 or -1.0');
+          return;
+        }
+      }
+
+      // Add user message with timestamp
+      setMessages(prev => [
+        ...prev,
+        { 
+          type: 'user', 
+          text: response.displayText || response,
+          timestamp: new Date()
+        }
+      ]);
+
+      // Update user responses
+      setUserResponses(prev => ({
+        ...prev,
+        [questions[currentStep].id]: response
+      }));
+
+      // Move to next step
+      if (currentStep < questions.length - 1) {
+        setCurrentStep(prev => prev + 1);
+        setTimeout(() => {
+          addBotMessage(questions[currentStep + 1].text);
+        }, 500);
+      } else {
+        // Show summary before completing
+        setShowSummary(true);
+        summarizeCustomizations();
+      }
+    } catch (error) {
+      console.error('Error processing response:', error);
+      setError('Failed to process your response. Please try again.');
+    }
+  };
+
+  // Generate customization summary
+  const summarizeCustomizations = () => {
+    const summary = [
+      'Here\'s a summary of your customizations:',
+      '',
+      'Pants Adjustments:',
+      `• Length: ${userResponses.pantsLength || 'No adjustment'}`,
+      `• Waist: ${userResponses.waist || 'No adjustment'}`,
+      `• Taper: ${userResponses.taper}`,
+      `• Cuff Style: ${userResponses.cuff}`,
+      '',
+      'Jacket Adjustments:',
+      `• Sleeves: ${userResponses.sleeves || 'No adjustment'}`,
+      `• Chest: ${userResponses.chest || 'No adjustment'}`,
+      `• Shoulders: ${userResponses.shoulders || 'No adjustment'}`,
+    ].join('\n');
+
+    addBotMessage(summary);
+    addBotMessage('Would you like to save these customizations?');
+  };
+
+  // Handle save and complete
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+      
+      // Organize data
+      const customizationData = {
+        pants: {
+          length: userResponses.pantsLength,
+          waist: userResponses.waist,
+          taper: userResponses.taper,
+          cuff: userResponses.cuff
+        },
+        measurements: {
+          sleeve: userResponses.sleeves,
+          chest: userResponses.chest,
+          shoulder: userResponses.shoulders
+        },
+        additionalNotes: userResponses.additionalNotes,
+        customizationPrice: calculateCustomizationPrice(),
+        timestamp: new Date().toISOString()
+      };
+
+      // Simulate processing delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      onComplete(customizationData);
+    } catch (error) {
+      console.error('Error saving customizations:', error);
+      setError('Failed to save customizations. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // Calculate customization price based on adjustments
+  const calculateCustomizationPrice = () => {
+    let price = 25; // Base alteration fee
+    
+    // Add costs for each adjustment
+    if (userResponses.pantsLength) price += 10;
+    if (userResponses.waist) price += 15;
+    if (userResponses.taper === 'Yes') price += 20;
+    if (userResponses.cuff !== 'None') price += 10;
+    if (userResponses.sleeves) price += 15;
+    if (userResponses.chest) price += 25;
+    if (userResponses.shoulders) price += 30;
+
+    return price;
+  };
+
+  // Handle close with confirmation if needed
+  const handleClose = () => {
+    if (Object.values(userResponses).some(val => val !== '')) {
+      if (window.confirm('Are you sure you want to close? Your customization progress will be lost.')) {
+        onCancel();
+      }
+    } else {
+      onCancel();
+    }
+  };
+
+  const resetChat = () => {
+    setMessages([
+      {
+        type: 'bot',
+        text: 'Hello! I can help you customize your suit for the perfect fit.',
+      },
+    ]);
+    setCurrentStep(0);
+    setUserResponses({
+      pantsLength: '',
+      waist: '',
+      taper: '',
+      cuff: '',
+      sleeves: '',
+      chest: '',
+      shoulders: '',
+      additionalNotes: '',
+    });
+    setShowSummary(false);
+  };
+
+  // If there's an error, show an error message
+  if (error) {
+    return (
+      <div className={`chatbot-container ${isOpen ? 'open' : ''}`}>
+        <div className='chatbot-header'>
+          <div className='d-flex align-items-center'>
+            <FaRobot className='me-2' />
+            <span>Customization Assistant</span>
+          </div>
+          <div>
+            <Button
+              variant='link'
+              className='chatbot-btn p-0 text-white'
+              onClick={onCancel}
+            >
+              <FaTimes />
+            </Button>
+          </div>
+        </div>
+        <div className='chatbot-body p-3 text-center'>
+          <div className='alert alert-danger'>{error}</div>
+          <Button
+            variant='primary'
+            onClick={() => {
+              setError(null);
+              resetChat();
+            }}
+          >
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`customization-chatbot ${isOpen ? 'open' : ''}`} style={{
+      position: 'fixed',
+      bottom: '20px',
+      right: '20px',
+      width: '400px',
+      maxWidth: '90vw',
+      zIndex: 1000,
+      boxShadow: '0 5px 20px rgba(0,0,0,0.15)',
+      borderRadius: '12px',
+      overflow: 'hidden'
+    }}>
+      <div className="chatbot-header d-flex align-items-center justify-content-between p-3">
+        <div className="d-flex align-items-center">
+          <FaRobot size={24} className="me-2" />
+          <div>
+            <h5 className="mb-0">Suit Customization</h5>
+            <small>{item?.name}</small>
+          </div>
+        </div>
+        <div>
+          <Button
+            variant="link"
+            className="text-white p-0 me-3"
+            onClick={() => setMinimized(!minimized)}
+          >
+            <FaChevronDown style={{
+              transform: minimized ? 'rotate(180deg)' : 'none',
+              transition: 'transform 0.3s ease'
+            }} />
+          </Button>
+          <Button
+            variant="link"
+            className="text-white p-0"
+            onClick={handleClose}
+            aria-label="Close chatbot"
+          >
+            <FaTimes />
+          </Button>
+        </div>
+      </div>
+
+      {!minimized && (
+        <div className="chatbot-content" style={{ height: '500px', display: 'flex', flexDirection: 'column' }}>
+          <div className='chatbot-body'>
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`message ${message.type === 'bot' ? 'bot' : 'user'}`}
+              >
+                {message.type === 'bot' && (
+                  <div className='bot-avatar'>
+                    <FaRobot />
+                  </div>
+                )}
+                <div className='message-content'>{message.text}</div>
+              </div>
+            ))}
+            {isTyping && (
+              <div className='message bot'>
+                <div className='bot-avatar'>
+                  <FaRobot />
+                </div>
+                <div className='message-content typing'>
+                  <span className='dot'></span>
+                  <span className='dot'></span>
+                  <span className='dot'></span>
+                </div>
+              </div>
+            )}
+            <div ref={chatEndRef} />
+          </div>
+
+          <div className="chat-input">
+            {error && (
+              <div className="text-danger mb-2 small">{error}</div>
+            )}
+            
+            {showSummary ? (
+              <div className="d-flex gap-2">
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => {
+                    setShowSummary(false);
+                    setCurrentStep(questions.length - 1);
+                  }}
+                >
+                  <FaArrowLeft /> Edit
+                </Button>
+                <Button
+                  variant="primary"
+                  className="flex-grow-1"
+                  onClick={handleSave}
+                  disabled={isSaving}
+                >
+                  {isSaving ? (
+                    <>Saving... <FaRegCheckCircle className="ms-1" /></>
+                  ) : (
+                    <>Save Customizations <FaSave className="ms-1" /></>
+                  )}
+                </Button>
+              </div>
+            ) : (
+              <Form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const input = inputRef.current;
+                  if (input && input.value) {
+                    handleResponse(input.value);
+                    input.value = '';
+                  }
+                }}
+              >
+                {questions[currentStep].type === 'select' ? (
+                  <Form.Select
+                    ref={inputRef}
+                    className="mb-2"
+                    onChange={(e) => handleResponse(e.target.value)}
+                  >
+                    <option value="">Select an option...</option>
+                    {questions[currentStep].options.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </Form.Select>
+                ) : questions[currentStep].type === 'textarea' ? (
+                  <Form.Control
+                    ref={inputRef}
+                    as="textarea"
+                    rows={3}
+                    placeholder={questions[currentStep].placeholder}
+                    className="mb-2"
+                  />
+                ) : (
+                  <Form.Control
+                    ref={inputRef}
+                    type="text"
+                    placeholder={questions[currentStep].placeholder}
+                    className="mb-2"
+                  />
+                )}
+                {!questions[currentStep].type === 'select' && (
+                  <Button type="submit" variant="primary" className="w-100">
+                    <FaPaperPlane className="me-2" />
+                    Send
+                  </Button>
+                )}
+              </Form>
+            )}
+          </div>
+        </div>
+      )}
+
+      {minimized && (
+        <div 
+          className="minimized-indicator p-2 text-center bg-white cursor-pointer" 
+          onClick={() => setMinimized(false)}
+        >
+          Click to continue customization
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CustomizationChatbot;

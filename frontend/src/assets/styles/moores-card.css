@@ -1,0 +1,604 @@
+/* Moore's Clothing Inspired Product Cards */
+
+.moores-product-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.moores-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-color: #dee2e6;
+}
+
+/* Search Section Styles */
+.moores-search-section {
+  background: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 2rem;
+}
+
+.moores-breadcrumb {
+  margin-bottom: 1.5rem;
+}
+
+.moores-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  color: #212529;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.moores-breadcrumb-link:hover {
+  background: #f8f9fa;
+  color: #007bff;
+  border-color: #007bff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+.moores-search-header {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.moores-search-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #212529;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.moores-search-subtitle {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.moores-filter-btn {
+  background: transparent;
+  border: 2px solid #212529;
+  color: #212529;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.moores-filter-btn:hover {
+  background: #212529;
+  border-color: #212529;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 37, 41, 0.2);
+}
+
+.moores-filter-panel {
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.moores-filter-label {
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.moores-filter-select {
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  padding: 0.75rem;
+  background: #ffffff;
+  color: #212529;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.moores-filter-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+  background: #ffffff;
+}
+
+.moores-reset-btn {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.moores-reset-btn:hover {
+  background: #6c757d;
+  border-color: #6c757d;
+  color: #ffffff;
+}
+
+.moores-no-results {
+  grid-column: 1 / -1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.moores-no-results h3 {
+  color: #212529;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.moores-no-results p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.moores-loader,
+.moores-error {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+/* Product Image Container */
+.moores-product-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.moores-product-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+}
+
+.moores-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.moores-product-card:hover .moores-product-image {
+  transform: scale(1.05);
+}
+
+.moores-image-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+}
+
+/* Product Badges */
+.moores-product-badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.moores-badge {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+  color: #ffffff;
+  border: none;
+}
+
+.moores-badge-sale {
+  background-color: #dc3545;
+}
+
+.moores-badge-new {
+  background-color: #28a745;
+}
+
+.moores-badge-bestseller {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Product Actions Overlay */
+.moores-product-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.moores-product-card:hover .moores-product-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.moores-action-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.moores-action-btn:hover {
+  background: #212529;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.moores-action-btn.active {
+  background: #dc3545;
+  color: #ffffff;
+}
+
+/* Product Info */
+.moores-product-info {
+  padding: 1.25rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.moores-product-brand {
+  font-size: 0.8rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.moores-product-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.moores-product-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.8rem;
+  transition: color 0.2s ease;
+}
+
+.moores-product-title:hover {
+  color: #007bff;
+}
+
+/* Product Rating */
+.moores-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.moores-rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.moores-rating-star {
+  font-size: 0.8rem;
+}
+
+.moores-rating-star.filled {
+  color: #ffc107;
+}
+
+.moores-rating-star.half {
+  color: #ffc107;
+}
+
+.moores-rating-star.empty {
+  color: #e9ecef;
+}
+
+.moores-rating-count {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Product Price */
+.moores-product-price {
+  margin-bottom: 1rem;
+}
+
+.moores-current-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.moores-original-price {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+}
+
+.moores-discount-amount {
+  font-size: 0.8rem;
+  color: #dc3545;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+/* Product Availability */
+.moores-product-availability {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.moores-in-stock {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.moores-low-stock {
+  color: #ffc107;
+  font-weight: 500;
+}
+
+.moores-out-of-stock {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+/* Product Buttons */
+.moores-product-buttons {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.moores-btn-primary {
+  background-color: #212529;
+  border: 1px solid #212529;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.moores-btn-primary:hover:not(:disabled) {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.moores-btn-primary:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.moores-btn-outline {
+  background-color: transparent;
+  border: 1px solid #212529;
+  color: #212529;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.moores-btn-outline:hover {
+  background-color: #212529;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .moores-search-section {
+    padding-top: 1rem;
+  }
+
+  .moores-search-header {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .moores-search-title {
+    font-size: 1.5rem;
+  }
+
+  .moores-filter-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .moores-product-card {
+    margin-bottom: 1rem;
+  }
+  
+  .moores-product-info {
+    padding: 1rem;
+  }
+  
+  .moores-product-buttons {
+    gap: 0.75rem;
+  }
+  
+  .moores-btn-primary,
+  .moores-btn-outline {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .moores-search-title {
+    font-size: 1.25rem;
+  }
+
+  .moores-product-image-container {
+    aspect-ratio: 4/5;
+  }
+  
+  .moores-product-title {
+    font-size: 0.9rem;
+    min-height: 2.4rem;
+  }
+  
+  .moores-current-price {
+    font-size: 1rem;
+  }
+}
+
+/* Animation for cards */
+.moores-product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: mooreslideInUp 0.6s ease forwards;
+}
+
+.moores-product-card:nth-child(1) { animation-delay: 0.1s; }
+.moores-product-card:nth-child(2) { animation-delay: 0.2s; }
+.moores-product-card:nth-child(3) { animation-delay: 0.3s; }
+.moores-product-card:nth-child(4) { animation-delay: 0.4s; }
+.moores-product-card:nth-child(5) { animation-delay: 0.5s; }
+.moores-product-card:nth-child(6) { animation-delay: 0.6s; }
+.moores-product-card:nth-child(7) { animation-delay: 0.7s; }
+.moores-product-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes mooreslideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid Layout Enhancement */
+.moores-search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+@media (max-width: 1200px) {
+  .moores-search-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .moores-search-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .moores-search-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+} 

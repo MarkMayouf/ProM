@@ -1,0 +1,798 @@
+/* Product Screen Styles - Moores Clothing Inspired */
+
+/* Product Page Container */
+.product-page-container {
+  padding: 0;
+  min-height: calc(100vh - 200px);
+  background: #fff;
+}
+
+/* Breadcrumb Section */
+.product-breadcrumb {
+  background: #f8f9fa;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.product-breadcrumb .breadcrumb {
+  margin-bottom: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.product-breadcrumb .breadcrumb-item {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.product-breadcrumb .breadcrumb-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.product-breadcrumb .breadcrumb-item.active {
+  color: #495057;
+  font-weight: 500;
+}
+
+/* Product Main Content */
+.product-main-content {
+  padding: 2rem 0;
+  background: #fff;
+}
+
+/* Product Gallery - Moores Style */
+.product-gallery-moores {
+  position: relative;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.product-image-main-moores {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
+.product-image-main-moores img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.product-image-main-moores:hover img {
+  transform: scale(1.02);
+}
+
+/* Product Thumbnails - Moores Style */
+.product-thumbnails-moores {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.product-thumbnail-moores {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-thumbnail-moores.active {
+  border-color: #007bff;
+}
+
+.product-thumbnail-moores:hover {
+  border-color: #007bff;
+  opacity: 0.8;
+}
+
+.product-thumbnail-moores img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Product Info Section - Moores Style */
+.product-info-moores {
+  padding: 0 2rem;
+}
+
+.product-brand-moores {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.product-title-moores {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.product-rating-moores {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-rating-moores .stars {
+  display: flex;
+  gap: 2px;
+}
+
+.product-rating-moores .rating-count {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Product Price - Moores Style */
+.product-price-moores {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.product-price-current-moores {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+  margin-right: 1rem;
+}
+
+.product-price-original-moores {
+  font-size: 1.25rem;
+  color: #6c757d;
+  text-decoration: line-through;
+  margin-right: 1rem;
+}
+
+.product-discount-badge-moores {
+  background: #dc3545;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Product Options - Moores Style */
+.product-options-moores {
+  margin-bottom: 2rem;
+}
+
+.product-option-group-moores {
+  margin-bottom: 1.5rem;
+}
+
+.product-option-label-moores {
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 0.75rem;
+  display: block;
+  font-size: 1rem;
+}
+
+/* Size Selection - Moores Style */
+.size-options-moores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.size-option-moores {
+  min-width: 50px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  background: #fff;
+  color: #495057;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.size-option-moores:hover {
+  border-color: #007bff;
+  background: #f8f9fa;
+}
+
+.size-option-moores.selected {
+  border-color: #007bff;
+  background: #007bff;
+  color: #fff;
+}
+
+.size-option-moores.unavailable {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f8f9fa;
+}
+
+.size-guide-link-moores {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.size-guide-link-moores:hover {
+  text-decoration: underline;
+}
+
+/* Color Selection - Moores Style */
+.color-options-moores {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.color-option-moores {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #dee2e6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.color-option-moores.selected {
+  box-shadow: 0 0 0 2px #007bff;
+  transform: scale(1.1);
+}
+
+.color-option-moores:hover {
+  transform: scale(1.05);
+}
+
+/* Quantity Selector - Moores Style */
+.quantity-selector-moores {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.quantity-label-moores {
+  font-weight: 600;
+  color: #212529;
+  min-width: 80px;
+}
+
+.quantity-controls-moores {
+  display: flex;
+  align-items: center;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.quantity-btn-moores {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn-moores:hover:not(:disabled) {
+  background: #007bff;
+  color: #fff;
+}
+
+.quantity-btn-moores:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-display-moores {
+  width: 60px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  background: #fff;
+  color: #212529;
+}
+
+/* Action Buttons - Moores Style */
+.product-actions-moores {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.add-to-cart-btn-moores,
+.buy-now-btn-moores,
+.customize-btn-moores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 56px;
+}
+
+.add-to-cart-btn-moores {
+  background: linear-gradient(135deg, #1a2c42, #2c4a6b);
+  color: white;
+  box-shadow: 0 4px 15px rgba(26, 44, 66, 0.3);
+}
+
+.add-to-cart-btn-moores:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0f1a2a, #1a2c42);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(26, 44, 66, 0.4);
+}
+
+.buy-now-btn-moores {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.buy-now-btn-moores:hover:not(:disabled) {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(40, 167, 69, 0.4);
+}
+
+.customize-btn-moores {
+  background: linear-gradient(135deg, #6f42c1, #8e44ad);
+  color: white;
+  box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+}
+
+.customize-btn-moores:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5a2d91, #6f42c1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(111, 66, 193, 0.4);
+}
+
+.add-to-cart-btn-moores:disabled,
+.buy-now-btn-moores:disabled,
+.customize-btn-moores:disabled {
+  background: #6c757d;
+  color: #adb5bd;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button Loading Animation */
+.add-to-cart-btn-moores::before,
+.buy-now-btn-moores::before,
+.customize-btn-moores::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.add-to-cart-btn-moores:hover::before,
+.buy-now-btn-moores:hover::before,
+.customize-btn-moores:hover::before {
+  left: 100%;
+}
+
+/* Mobile Action Buttons Enhancement */
+.mobile-fixed-add-to-cart .btn-group {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.mobile-fixed-add-to-cart .btn-add-to-cart,
+.mobile-fixed-add-to-cart .btn-buy-now,
+.mobile-fixed-add-to-cart .btn-customize {
+  flex: 1;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.mobile-fixed-add-to-cart .btn-buy-now {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  border-color: #28a745;
+}
+
+.mobile-fixed-add-to-cart .btn-buy-now:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  border-color: #218838;
+}
+
+/* Secondary Actions */
+.secondary-actions-moores {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.secondary-btn-moores {
+  padding: 0.75rem 1.5rem;
+  background: #f8f9fa;
+  color: #495057;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.secondary-btn-moores:hover {
+  background: #e9ecef;
+  color: #495057;
+  text-decoration: none;
+}
+
+/* Product Features - Moores Style */
+.product-features-moores {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.product-features-title-moores {
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.product-features-list-moores {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-features-list-moores li {
+  padding: 0.5rem 0;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-features-list-moores li::before {
+  content: "✓";
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Product Tabs - Moores Style */
+.product-tabs-moores {
+  margin-top: 3rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 2rem;
+}
+
+.nav-tabs-moores {
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 2rem;
+}
+
+.nav-tabs-moores .nav-link {
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #6c757d;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  background: none;
+}
+
+.nav-tabs-moores .nav-link:hover {
+  border-color: transparent;
+  color: #007bff;
+}
+
+.nav-tabs-moores .nav-link.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+  background: none;
+}
+
+/* Enhanced Product Image Zoom */
+.product-image-zoom-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8f9fa;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-image-zoom-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.zoom-hint {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+.product-image-zoom-container:hover .zoom-hint {
+  opacity: 1;
+}
+
+/* Product Detail Gallery Integration */
+.product-detail-gallery.charles-tyrwhitt-style .main-image-container {
+  height: 600px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  margin-bottom: 1rem;
+}
+
+.product-detail-gallery.charles-tyrwhitt-style .main-image-wrapper {
+  height: 100%;
+  padding-bottom: 0;
+}
+
+.product-detail-gallery.charles-tyrwhitt-style .main-image {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-detail-gallery.charles-tyrwhitt-style .thumbnails-container {
+  margin-top: 1rem;
+}
+
+.product-detail-gallery.charles-tyrwhitt-style .thumbnail-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+}
+
+@media (max-width: 992px) {
+  .product-detail-gallery.charles-tyrwhitt-style .main-image-container {
+    height: 500px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .product-info-moores {
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
+  
+  .product-image-main-moores {
+    height: 500px;
+  }
+  
+  .product-actions-moores {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .add-to-cart-btn-moores,
+  .buy-now-btn-moores {
+    flex: 1;
+    min-width: calc(50% - 0.5rem);
+  }
+  
+  .customize-btn-moores {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-main-content {
+    padding: 1rem 0;
+  }
+  
+  .product-info-moores {
+    padding: 0;
+  }
+  
+  .product-image-main-moores {
+    height: 400px;
+  }
+  
+  .product-title-moores {
+    font-size: 1.5rem;
+  }
+  
+  .product-price-current-moores {
+    font-size: 1.75rem;
+  }
+  
+  .product-actions-moores {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .add-to-cart-btn-moores,
+  .buy-now-btn-moores,
+  .customize-btn-moores {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .zoom-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-image-main-moores {
+    height: 350px;
+  }
+  
+  .size-options-moores {
+    gap: 0.25rem;
+  }
+  
+  .size-option-moores {
+    min-width: 45px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .secondary-actions-moores {
+    flex-direction: column;
+  }
+  
+  .product-image-zoom-container {
+    border-radius: 8px;
+  }
+  
+  .add-to-cart-btn-moores,
+  .buy-now-btn-moores,
+  .customize-btn-moores {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
+}
+
+/* Mobile Fixed Add to Cart */
+.mobile-fixed-add-to-cart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e9ecef;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.mobile-fixed-add-to-cart .product-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #212529;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-fixed-add-to-cart .product-price {
+  margin-bottom: 1rem;
+}
+
+.mobile-fixed-add-to-cart .product-price .sale-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #dc3545;
+  margin-right: 0.5rem;
+}
+
+.mobile-fixed-add-to-cart .product-price .original-price {
+  font-size: 1rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+.mobile-fixed-add-to-cart .btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mobile-fixed-add-to-cart .btn-add-to-cart,
+.mobile-fixed-add-to-cart .btn-buy-now,
+.mobile-fixed-add-to-cart .btn-customize {
+  flex: 1;
+  font-size: 0.85rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.mobile-fixed-add-to-cart .btn-buy-now {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+.mobile-fixed-add-to-cart .btn-buy-now:hover {
+  background: #218838;
+  border-color: #1e7e34;
+}
+
+@media (max-width: 768px) {
+  .mobile-fixed-add-to-cart {
+    display: block;
+  }
+  
+  body {
+    padding-bottom: 120px;
+  }
+}

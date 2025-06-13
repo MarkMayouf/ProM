@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-upload-scripts",
+  "version": "1.0.0",
+  "description": "Bulk image upload utilities for portfolio website",
+  "main": "bulk-image-upload.js",
+  "type": "module",
+  "scripts": {
+    "upload": "node bulk-image-upload.js",
+    "demo": "node demo-upload.js",
+    "test": "echo \"Upload scripts ready to use!\"",
+    "help": "echo \"Available commands: npm run upload <directory>, npm run demo\""
+  },
+  "keywords": [
+    "image",
+    "upload",
+    "bulk",
+    "portfolio",
+    "ecommerce"
+  ],
+  "author": "Portfolio Admin",
+  "license": "ISC",
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}

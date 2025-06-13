@@ -1,0 +1,306 @@
+/* Anti-Flickering and Performance Optimizations */
+
+/* Hardware acceleration for smooth animations */
+.hardware-accelerated {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Smooth transitions with optimized timing */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Prevent layout thrashing */
+.no-layout-shift {
+  contain: layout style paint;
+}
+
+/* Optimized fade-in animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.fade-in-up:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-up:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-up:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-up:nth-child(4) { transition-delay: 0.4s; }
+.fade-in-up:nth-child(5) { transition-delay: 0.5s; }
+
+/* Optimized Hugo Boss product animations */
+.hugo-product-item {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.hugo-product-item.fade-in-up {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Intersection observer optimizations */
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Prevent reflow during image loading */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Optimized scroll animations */
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.scroll-animation.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduce motion for users with preferences */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up,
+  .hugo-product-item,
+  .scroll-animation,
+  .smooth-transition {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .fade-in-up,
+  .hugo-product-item,
+  .scroll-animation {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* GPU-accelerated transforms */
+.gpu-accelerated {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Prevent flickering on webkit browsers */
+.no-webkit-flicker {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimized opacity transitions */
+.opacity-transition {
+  transition: opacity 0.3s ease-in-out;
+  will-change: opacity;
+}
+
+/* Container queries for responsive animations */
+@container (min-width: 768px) {
+  .responsive-animation {
+    animation-duration: 0.5s;
+  }
+}
+
+@container (max-width: 767px) {
+  .responsive-animation {
+    animation-duration: 0.3s;
+  }
+}
+
+/* Performance-optimized hover effects */
+.optimized-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.optimized-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Debounced scroll listener optimizations */
+.scroll-optimized {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* CSS containment for performance */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-style {
+  contain: style;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-all {
+  contain: layout style paint;
+}
+
+/* Optimized loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Critical rendering optimizations */
+.critical-content {
+  contain: layout style;
+  will-change: auto;
+}
+
+/* Async animation loading */
+.lazy-animation {
+  animation-play-state: paused;
+}
+
+.lazy-animation.loaded {
+  animation-play-state: running;
+}
+
+/* Optimized filter animations */
+.filter-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.filter-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+.filter-visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Memory-efficient animations */
+.memory-efficient {
+  transform: translateZ(0);
+  will-change: transform;
+  animation-fill-mode: forwards;
+}
+
+/* Prevent text selection during animations */
+.no-select-during-animation {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.animation-complete .no-select-during-animation {
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
+
+/* Optimized modal animations */
+.modal-fade-optimized {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.modal-fade-optimized.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Reduce repaints during scrolling */
+.scroll-optimized-element {
+  position: relative;
+  z-index: 0;
+  transform: translateZ(0);
+}
+
+/* Optimized card hover effects */
+.card-hover-optimized {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.card-hover-optimized:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Prevent layout shift in grid items */
+.grid-item-stable {
+  min-height: 300px; /* Adjust based on content */
+  contain: layout;
+}
+
+/* Optimized button press animations */
+.button-press-optimized {
+  transition: transform 0.1s ease;
+  will-change: transform;
+}
+
+.button-press-optimized:active {
+  transform: scale(0.98);
+}
+
+/* Smooth color transitions */
+.color-transition {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  will-change: color, background-color, border-color;
+}
+
+/* Prevent flicker on dynamic content */
+.dynamic-content {
+  min-height: 1px;
+  contain: layout style;
+} 

@@ -1,0 +1,127 @@
+/* Admin Dropdown Positioning Fix */
+.dropdown {
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+.dropdown-toggle {
+  z-index: 9998 !important;
+}
+
+.dropdown-menu {
+  position: absolute !important;
+  z-index: 99999 !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+  will-change: auto !important;
+  margin-top: 2px !important;
+  min-width: 160px !important;
+  background-color: white !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 0.375rem !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.dropdown-menu.show {
+  display: block !important;
+  position: absolute !important;
+  z-index: 99999 !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+/* Fix for table containers */
+.table-responsive {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative !important;
+}
+
+.table-responsive .dropdown {
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+.table-responsive .dropdown-menu {
+  position: absolute !important;
+  z-index: 99999 !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Ensure dropdown appears above all other elements */
+.show > .dropdown-menu {
+  z-index: 99999 !important;
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+/* Card body overflow fix */
+.card-body {
+  overflow: visible !important;
+}
+
+/* Container overflow fix */
+.container,
+.container-fluid {
+  overflow: visible !important;
+}
+
+/* Admin table specific fixes */
+.admin-table {
+  position: relative;
+  z-index: 1;
+}
+
+.admin-table td {
+  position: relative;
+  overflow: visible;
+}
+
+.admin-table .dropdown {
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* Specific admin dropdown classes */
+.admin-actions-dropdown {
+  position: relative !important;
+  z-index: 99999 !important;
+}
+
+.admin-dropdown-toggle {
+  z-index: 99998 !important;
+}
+
+.admin-dropdown-menu {
+  position: absolute !important;
+  z-index: 999999 !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+  will-change: auto !important;
+  margin-top: 2px !important;
+  background-color: white !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 0.375rem !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.admin-dropdown-menu.show {
+  display: block !important;
+  position: absolute !important;
+  z-index: 999999 !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+} 

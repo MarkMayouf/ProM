@@ -1,0 +1,844 @@
+/* Customization Guide Styling */
+.customization-guide {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.guide-header {
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    color: white;
+    padding: 20px;
+    border: none;
+}
+
+.guide-header h4 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.guide-footer {
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Guide Icons */
+.guide-icon {
+    color: #fff;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.fabric-icon {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+
+.style-icon {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+.measurement-icon {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+}
+
+/* Guide Cards */
+.guide-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabs Styling */
+#customization-guide-tabs .nav-link {
+    font-weight: 500;
+    color: #495057;
+    border: none;
+    padding: 10px 15px;
+}
+
+#customization-guide-tabs .nav-link.active {
+    font-weight: 600;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    background: transparent;
+}
+
+/* Measurement Chart */
+.measurement-chart-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.measurement-chart-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style Options */
+.style-options-list {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.style-options-list li {
+    padding: 5px 0;
+    position: relative;
+}
+
+.style-options-list li:before {
+    content: "•";
+    color: #007bff;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+/* Accordion Styling */
+.style-accordion .accordion-button:not(.collapsed) {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    box-shadow: none;
+}
+
+.style-accordion .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 123, 255, 0.25);
+}
+
+/* Table Styling */
+.fabric-section table th,
+.measurement-section table th {
+    background-color: #f8f9fa;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .guide-header {
+        padding: 15px;
+    }
+
+    .guide-header h4 {
+        font-size: 1.3rem;
+    }
+
+    .customization-guide .table {
+        font-size: 0.9rem;
+    }
+
+    .guide-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* Help Button */
+.help-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 2px solid #17a2b8;
+}
+
+.help-btn:hover {
+    background-color: #17a2b8;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Animation for Guide Elements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.measurement-section,
+.fabric-section,
+.style-accordion .accordion-item {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.style-accordion .accordion-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.style-accordion .accordion-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.style-accordion .accordion-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.style-accordion .accordion-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Suit Customizer Styling */
+.suit-customizer {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.suit-customizer .card-header {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+}
+
+.customization-price-alert {
+    background-color: #f8f9fa;
+    border-left: 4px solid #3498db;
+}
+
+.price-badge {
+    font-size: 1rem;
+    padding: 5px 10px;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+/* Style for section titles */
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Customizer tab styling */
+.customizer-tabs .nav-link {
+    font-weight: 500;
+    color: #495057;
+    padding: 10px 20px;
+    border-radius: 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.customizer-tabs .nav-link.active {
+    background-color: transparent;
+    color: #3498db;
+    font-weight: 600;
+}
+
+.customizer-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+}
+
+/* Save customization button */
+.save-customization-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    border: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.save-customization-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Form control styling */
+.suit-customizer .form-control,
+.suit-customizer .form-select {
+    border-radius: 8px;
+    border: 2px solid #ced4da;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.suit-customizer .form-control:focus,
+.suit-customizer .form-select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .suit-customizer .card-header {
+        padding: 12px 15px;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+}
+
+/* Customization Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    max-width: 90vw;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.chatbot-container.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.chatbot-container.minimized {
+    height: 60px;
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #003b5c;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.chatbot-header .chatbot-icon {
+    font-size: 1.2rem;
+}
+
+.chatbot-controls button {
+    color: white;
+    font-size: 1rem;
+}
+
+.minimize-icon {
+    transition: transform 0.3s ease;
+}
+
+.minimize-icon.minimized {
+    transform: rotate(180deg);
+}
+
+.chatbot-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 60px);
+    transition: height 0.3s ease;
+}
+
+.chatbot-container.minimized .chatbot-content {
+    height: 0;
+}
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 350px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    position: relative;
+    word-break: break-word;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: #333;
+    padding-left: 40px;
+    border-bottom-left-radius: 5px;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #003b5c;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.message-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+.bot-icon {
+    color: #003b5c;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: #003b5c;
+    border-radius: 50%;
+    display: block;
+    animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+.chatbot-input {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background-color: white;
+}
+
+.send-btn {
+    background-color: #003b5c;
+    border-color: #003b5c;
+}
+
+.send-btn:hover {
+    background-color: #002741;
+    border-color: #002741;
+}
+
+/* Chatbot Toggle Button */
+.chatbot-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #003b5c;
+    color: white;
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    background-color: #00527e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-toggle span {
+    font-weight: 500;
+    display: inline-block;
+}
+
+@media (max-width: 576px) {
+    .chatbot-toggle {
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .chatbot-toggle span {
+        display: none;
+    }
+}
+
+/* Return policy alert styles */
+.policy-section .alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+    border-left: 4px solid #ffc107;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+}
+
+/* Style for the customization guide modal */
+.customization-guide-modal .modal-content {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.customization-guide-modal .modal-header {
+    background-color: #003b5c;
+    color: white;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.customization-guide-modal .modal-header .close {
+    color: white;
+}
+
+.customization-guide-modal .nav-tabs .nav-link {
+    color: #495057;
+    border: none;
+    padding: 10px 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.customization-guide-modal .nav-tabs .nav-link.active {
+    color: #003b5c;
+    border-bottom: 2px solid #003b5c;
+    background-color: transparent;
+}
+
+.customization-guide-modal .guide-card {
+    height: 100%;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.customization-guide-modal .guide-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Suit customizer styles */
+.suit-customizer {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.suit-customizer .card-header {
+    background-color: #003b5c;
+    color: white;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 15px 20px;
+}
+
+.suit-customizer .card-body {
+    padding: 25px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #003b5c;
+}
+
+.customization-price-alert {
+    background-color: rgba(0, 59, 92, 0.05);
+    border-left: 4px solid #003b5c;
+    margin-bottom: 25px;
+}
+
+.price-badge {
+    font-size: 1rem;
+    padding: 5px 10px;
+    background-color: #003b5c;
+}
+
+.save-customization-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.save-customization-btn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Return policy note in SuitCustomizer */
+.return-policy-note {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+    border-radius: 4px;
+}
+
+/* Customization guide button in ProductScreen */
+.customization-guide-btn {
+    text-decoration: none;
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+.customization-guide-btn:hover {
+    color: #003b5c;
+    text-decoration: none;
+}
+
+/* Suit Customization Chart Styles */
+.suit-customization-chart {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.suit-customization-chart .card-header {
+    border-bottom: none;
+    padding: 1.25rem;
+}
+
+.suit-customization-chart .table {
+    margin-bottom: 0;
+}
+
+.suit-customization-chart .table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.suit-customization-chart .table td {
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+.customization-notes {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.customization-notes ul li {
+    margin-bottom: 0.75rem;
+    color: #495057;
+    display: flex;
+    align-items: center;
+}
+
+.customization-notes ul li:before {
+    content: "✓";
+    margin-right: 0.5rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Chatbot Enhancement Styles */
+.customization-chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 400px;
+    max-width: 90vw;
+    z-index: 1000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.chatbot-header {
+    background: linear-gradient(45deg, #1a2c42, #2c3e50);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatbot-messages {
+    height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.message.bot .message-content {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.message.user .message-content {
+    background: #1a2c42;
+    color: white;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.measurement-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.measurement-input input {
+    width: 100px;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.measurement-input span {
+    color: #6c757d;
+}
+
+/* Customization Summary Styles */
+.customization-summary {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.summary-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.summary-value {
+    font-weight: 500;
+    color: #212529;
+}
+
+/* No Refund Warning */
+.no-refund-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.warning-icon {
+    color: #856404;
+    font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .customization-chatbot {
+        width: 90vw;
+        right: 5vw;
+    }
+
+    .chatbot-messages {
+        height: 350px;
+    }
+
+    .summary-details {
+        grid-template-columns: 1fr;
+    }
+}
